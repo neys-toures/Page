@@ -1,0 +1,53 @@
+/* Component helpers (compatible with Tailwind via CDN; no @apply) */
+.contact-btn { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; text-align:center; border-radius:.75rem; border:1px solid #e2e8f0; background:#fff; padding:1rem; box-shadow:0 1px 2px rgba(0,0,0,.05); transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease; color:#0f172a; }
+.contact-btn:hover { box-shadow:0 6px 16px rgba(2,6,23,.08); border-color:#84d6ff; transform: translateY(-1px); }
+.contact-label { font-size:.875rem; font-weight:600; }
+.contact-icon { width:44px; height:44px; border-radius:9999px; display:flex; align-items:center; justify-content:center; color:#fff; }
+.contact-icon svg { width:22px; height:22px; display:block; }
+.contact-facebook .contact-icon { background:#1877F2; }
+.contact-instagram .contact-icon { background: linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4); }
+.contact-whatsapp .contact-icon { background:#25D366; }
+.contact-email .contact-icon { background:#EA4335; }
+.mobile-nav-item { display:flex; align-items:center; justify-content:center; border-radius:.375rem; border:1px solid #e2e8f0; background:#fff; padding:.5rem 0; font-weight:600; color:#334155; transition: color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.mobile-nav-item:hover { color:#086da0; border-color:#84d6ff; box-shadow:0 2px 8px rgba(2,6,23,.06); }
+
+/* Carousel base */
+.carousel { position: relative; overflow: hidden; border-radius: 0.75rem; }
+.carousel-track { display: flex; will-change: transform; transition: transform var(--carousel-duration, 600ms) cubic-bezier(0.22, 1, 0.36, 1); }
+.carousel-slide { min-width: 100%; height: 220px; }
+.carousel img { width: 100%; height: 100%; object-fit: cover; }
+.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: 1px solid rgba(15,23,42,0.2); padding: 0.4rem; border-radius: 9999px; line-height: 0; z-index: 5; }
+.carousel-btn:hover { background: #ffffff; }
+.carousel-btn.prev { left: 0.5rem; }
+.carousel-btn.next { right: 0.5rem; }
+
+/* Card hover overlay */
+.card { position: relative; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; background: #ffffff; }
+.card-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 0.5rem; padding: 1rem; background: linear-gradient(180deg, rgba(2,6,23,0) 0%, rgba(2,6,23,0.55) 60%, rgba(2,6,23,0.85) 100%); color: #fff; opacity: 0; transition: opacity 0.25s ease; }
+.card:hover .card-overlay, .card:focus-within .card-overlay, .card.touch-active .card-overlay { opacity: 1; }
+.card-title { font-size: 1.125rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+.card-actions { display: flex; gap: 0.5rem; }
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { transition: none; }
+  .card-overlay { transition: none; }
+}
+
+/* Evitar scroll de fondo cuando el modal está abierto */
+body.modal-open { overscroll-behavior: contain; }
+
+/* Modal (suavizado) */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(2,6,23,0.55); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 220ms ease; }
+.modal-backdrop[aria-hidden="false"] { opacity: 1; pointer-events: auto; }
+.modal-panel { width: 100%; max-width: 520px; background: #fff; border-radius: 0.75rem; box-shadow: 0 20px 40px rgba(2,6,23,0.25); border: 1px solid #e2e8f0; transform: translateY(16px) scale(0.98); opacity: 0; transition: transform 260ms ease, opacity 260ms ease; }
+.modal-backdrop[aria-hidden="false"] .modal-panel { transform: translateY(0) scale(1); opacity: 1; }
+.modal-header { display:flex; align-items:center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid #e2e8f0; }
+.modal-title { font-size: 1.125rem; font-weight: 700; color: #0f172a; }
+.modal-body { padding: 1rem 1.25rem; color: #334155; line-height: 1.6; }
+.modal-footer { display:flex; gap:.5rem; justify-content:flex-end; padding: 1rem 1.25rem; border-top: 1px solid #e2e8f0; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:.5rem; padding:.5rem .9rem; font-weight:600; font-size:.9rem; }
+.btn-secondary { background:#fff; color:#0f172a; border:1px solid #cbd5e1; }
+.btn-secondary:hover { border-color:#94a3b8; }
+.btn-primary { background:#0685c7; color:#fff; border:1px solid #086da0; }
+.btn-primary:hover { background:#086da0; }

@@ -1,0 +1,64 @@
+{
+  "meta": { "lang": "en" },
+  "seo": {
+    "title": "Cartagena with Neys | Tours in Cartagena & the Caribbean",
+    "description": "Experience Cartagena with Neys, your trusted tour guide. Discover islands, beaches, city tours and unforgettable experiences. Text me on WhatsApp!"
+  },
+  "app": { "title": "Cartagena with Neys" },
+  "sections": {
+    "home": "Home",
+    "tours": "Top tours",
+  "services": "Other services",
+  "contact": "Contact me"
+  },
+  "hero": {
+    "welcome": "Hi, I'm Neys, your trusted tour guide. Join me to discover the wonders of the Caribbean region."
+  },
+  "tours": {
+    "count_label": "tours available",
+    "atardecer_sibarita": "Sibarita Master Sunset",
+    "chiva_rumbera": "Party Bus (Chiva Rumbera)",
+    "city_tour": "City Tour",
+    "eteka_beach": "Eteka Beach Resort",
+    "pao_pao": "Pao Pao",
+    "playa_blanca": "Playa Blanca",
+    "playa_tranquila": "Tranquila Beach",
+    "tour_cinco_islas": "5 Islands Tour"
+  },
+  "cta": {
+    "chat": "Let's chat",
+    "more": "Learn more",
+  "reserve": "Reserve",
+  "close": "Close",
+    "whatsapp_message": "Hi, I'm interested in this tour"
+  },
+  "services": {
+    "alquiler_caballos": "Horse rentals",
+    "alquiler_cuatrimoto": "ATV rentals",
+    "alquiler_yates": "Yacht rentals"
+  },
+  "contact": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "email": "Gmail"
+  }
+  ,
+  "desc": {
+    "tours": {
+      "atardecer_sibarita": "Dinner on board with stunning sunset views over Cartagena bay.",
+      "chiva_rumbera": "Night tour with music, dance and fun around the city streets.",
+      "city_tour": "Discover the historic center, walls and landmarks with a local guide.",
+      "eteka_beach": "Beach day at a private resort with a relaxed vibe and premium services.",
+      "pao_pao": "Food and beach experience in a unique tropical setting.",
+      "playa_blanca": "Crystal-clear waters and white sand to enjoy the Caribbean.",
+      "playa_tranquila": "A peaceful paradise ideal to relax away from the crowds.",
+      "tour_cinco_islas": "Island-hopping to the most beautiful spots with snorkeling and sun."
+    },
+    "services": {
+      "alquiler_caballos": "Guided horseback rides through natural landscapes.",
+      "alquiler_cuatrimoto": "Off-road ATV adventures on exciting routes.",
+      "alquiler_yates": "Private yachts and boats for trips and special events."
+    }
+  }
+}

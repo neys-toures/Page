@@ -1,0 +1,64 @@
+{
+  "meta": { "lang": "es" },
+  "seo": {
+    "title": "Cartagena con Neys | Tours en Cartagena y el Caribe",
+    "description": "Vive Cartagena con Neys, tu guía turístico de confianza. Descubre islas, playas, city tour y experiencias inolvidables. ¡Escríbeme por WhatsApp!"
+  },
+  "app": { "title": "Cartagena con Neys" },
+  "sections": {
+    "home": "Inicio",
+    "tours": "Tours principales",
+  "services": "Otros servicios",
+  "contact": "Contáctame"
+  },
+  "hero": {
+    "welcome": "Hola, soy Neys, tu guía turístico de confianza. Acompáñame a descubrir las maravillas de la región Caribe."
+  },
+  "tours": {
+    "count_label": "tours disponibles",
+    "atardecer_sibarita": "Atardecer Sibarita Master",
+    "chiva_rumbera": "Chiva Rumbera",
+    "city_tour": "City Tour",
+    "eteka_beach": "Eteka Beach Resort",
+    "pao_pao": "Pao Pao",
+    "playa_blanca": "Playa Blanca",
+    "playa_tranquila": "Playa Tranquila",
+    "tour_cinco_islas": "Tour 5 Islas"
+  },
+  "cta": {
+    "chat": "Conversemos",
+    "more": "Conocer más",
+  "reserve": "Hacer reserva",
+  "close": "Cerrar",
+  "whatsapp_message": "Hola, estoy interesado en este tour"
+  },
+  "services": {
+    "alquiler_caballos": "Alquiler de caballos",
+    "alquiler_cuatrimoto": "Alquiler de cuatrimoto",
+    "alquiler_yates": "Alquiler de yates"
+  },
+  "contact": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "email": "Gmail"
+  }
+  ,
+  "desc": {
+    "tours": {
+      "atardecer_sibarita": "Cena a bordo con vistas espectaculares del atardecer sobre la bahía de Cartagena.",
+      "chiva_rumbera": "Recorrido nocturno con música, baile y diversión por las calles de la ciudad.",
+      "city_tour": "Conoce el centro histórico, murallas y sitios emblemáticos con guía local.",
+      "eteka_beach": "Día de playa en resort privado con ambiente relajado y servicios premium.",
+      "pao_pao": "Experiencia gastronómica y de playa en un entorno tropical único.",
+      "playa_blanca": "Aguas cristalinas y arena blanca para desconectarte y disfrutar del Caribe.",
+      "playa_tranquila": "Un paraíso apacible ideal para relajarse lejos del bullicio.",
+      "tour_cinco_islas": "Circuito por las islas más hermosas del archipiélago con snorkel y sol."
+    },
+    "services": {
+      "alquiler_caballos": "Paseos guiados a caballo por escenarios naturales de la región.",
+      "alquiler_cuatrimoto": "Aventura off-road en cuatrimoto por rutas emocionantes.",
+      "alquiler_yates": "Yates y lanchas para paseos privados y eventos especiales."
+    }
+  }
+}
