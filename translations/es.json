@@ -8,8 +8,8 @@
   "sections": {
     "home": "Inicio",
     "tours": "Tours principales",
-  "services": "Otros servicios",
-  "contact": "Contáctame"
+    "services": "Otros servicios",
+    "contact": "Contáctame"
   },
   "hero": {
     "welcome": "Hola, soy Neys, tu guía turístico de confianza. Acompáñame a descubrir las maravillas de la región Caribe."
@@ -23,14 +23,16 @@
     "pao_pao": "Pao Pao",
     "playa_blanca": "Playa Blanca",
     "playa_tranquila": "Playa Tranquila",
-    "tour_cinco_islas": "Tour 5 Islas"
+    "tour_cinco_islas": "Tour 5 Islas",
+    "volcan_totumo": "Volcán del Totumo",
+    "tour_palenque": "Tour por Palenque"
   },
   "cta": {
     "chat": "Conversemos",
     "more": "Conocer más",
-  "reserve": "Hacer reserva",
-  "close": "Cerrar",
-  "whatsapp_message": "Hola, estoy interesado en este tour"
+    "reserve": "Hacer reserva",
+    "close": "Cerrar",
+    "whatsapp_message": "Hola, estoy interesado en este tour"
   },
   "services": {
     "alquiler_caballos": "Alquiler de caballos",
@@ -42,8 +44,7 @@
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
     "email": "Gmail"
-  }
-  ,
+  },
   "desc": {
     "tours": {
       "atardecer_sibarita": "Cena a bordo con vistas espectaculares del atardecer sobre la bahía de Cartagena.",
@@ -53,7 +54,9 @@
       "pao_pao": "Experiencia gastronómica y de playa en un entorno tropical único.",
       "playa_blanca": "Aguas cristalinas y arena blanca para desconectarte y disfrutar del Caribe.",
       "playa_tranquila": "Un paraíso apacible ideal para relajarse lejos del bullicio.",
-      "tour_cinco_islas": "Circuito por las islas más hermosas del archipiélago con snorkel y sol."
+      "tour_cinco_islas": "Circuito por las islas más hermosas del archipiélago con snorkel y sol.",
+      "volcan_totumo": "Relájate en el barro volcánico con propiedades terapéuticas y visita lagunas cercanas.",
+      "tour_palenque": "Conoce la historia y cultura de San Basilio de Palenque, patrimonio oral e inmaterial."
     },
     "services": {
       "alquiler_caballos": "Paseos guiados a caballo por escenarios naturales de la región.",

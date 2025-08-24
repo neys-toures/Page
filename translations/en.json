@@ -8,8 +8,8 @@
   "sections": {
     "home": "Home",
     "tours": "Top tours",
-  "services": "Other services",
-  "contact": "Contact me"
+    "services": "Other services",
+    "contact": "Contact me"
   },
   "hero": {
     "welcome": "Hi, I'm Neys, your trusted tour guide. Join me to discover the wonders of the Caribbean region."
@@ -23,13 +23,15 @@
     "pao_pao": "Pao Pao",
     "playa_blanca": "Playa Blanca",
     "playa_tranquila": "Tranquila Beach",
-    "tour_cinco_islas": "5 Islands Tour"
+    "tour_cinco_islas": "5 Islands Tour",
+    "volcan_totumo": "Totumo Volcano",
+    "tour_palenque": "Palenque Tour"
   },
   "cta": {
     "chat": "Let's chat",
     "more": "Learn more",
-  "reserve": "Reserve",
-  "close": "Close",
+    "reserve": "Reserve",
+    "close": "Close",
     "whatsapp_message": "Hi, I'm interested in this tour"
   },
   "services": {
@@ -42,8 +44,7 @@
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
     "email": "Gmail"
-  }
-  ,
+  },
   "desc": {
     "tours": {
       "atardecer_sibarita": "Dinner on board with stunning sunset views over Cartagena bay.",
@@ -53,7 +54,9 @@
       "pao_pao": "Food and beach experience in a unique tropical setting.",
       "playa_blanca": "Crystal-clear waters and white sand to enjoy the Caribbean.",
       "playa_tranquila": "A peaceful paradise ideal to relax away from the crowds.",
-      "tour_cinco_islas": "Island-hopping to the most beautiful spots with snorkeling and sun."
+      "tour_cinco_islas": "Island-hopping to the most beautiful spots with snorkeling and sun.",
+      "volcan_totumo": "Relax in the volcanic mud with therapeutic properties and visit nearby lagoons.",
+      "tour_palenque": "Learn about San Basilio de Palenque's history and culture, an oral and intangible heritage."
     },
     "services": {
       "alquiler_caballos": "Guided horseback rides through natural landscapes.",

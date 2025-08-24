@@ -12,6 +12,8 @@
   { folder: 'Playa blanca', key: 'tours.playa_blanca', descKey: 'desc.tours.playa_blanca' },
   { folder: 'playa tranquila', key: 'tours.playa_tranquila', descKey: 'desc.tours.playa_tranquila' },
   { folder: 'Tour 5 islas', key: 'tours.tour_cinco_islas', descKey: 'desc.tours.tour_cinco_islas' },
+  { folder: 'Volcan de totumo', key: 'tours.volcan_totumo', descKey: 'desc.tours.volcan_totumo' },
+  { folder: 'Palenque', key: 'tours.tour_palenque', descKey: 'desc.tours.tour_palenque' },
   ];
 
   // Servicios: nombre de archivo exacto según estructura
@@ -30,16 +32,52 @@
     'Pao Pao': 5,
     'Playa blanca': 3,
     'playa tranquila': 2,
-    'Tour 5 islas': 4
+  'Tour 5 islas': 4,
+  'Volcan de totumo': 3,
+  'Palenque': 4
   };
 
   function listImagesFor(folder) {
-    const n = IMAGE_COUNTS[folder] || 0;
-    const arr = [];
-    for (let i = 1; i <= n; i++) {
-      arr.push(`${TOURS_BASE}/${folder}/${i}.webp`);
+    const n = IMAGE_COUNTS[folder];
+    const first = `${TOURS_BASE}/${folder}/1.webp`;
+    if (typeof n === 'number' && n > 0) {
+      const rest = [];
+      for (let i = 2; i <= n; i++) rest.push(`${TOURS_BASE}/${folder}/${i}.webp`);
+      return { images: [first], rest, needsDiscover: false };
     }
-    return arr;
+    // Fallback mínimo: asumir al menos 1.webp y descubrir el resto
+    return { images: [first], rest: [], needsDiscover: true };
+  }
+
+  async function discoverImages(folder, max = 8) {
+    const urls = [];
+    // Si HEAD no está permitido, usaremos carga de Image como fallback
+    for (let i = 1; i <= max; i++) {
+      const url = `${TOURS_BASE}/${folder}/${i}.webp`;
+      try {
+        const res = await fetch(url, { method: 'HEAD' });
+        if (res.ok) urls.push(url);
+        else if (res.status === 405) {
+          const ok = await new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+          });
+          if (ok) urls.push(url);
+        }
+      } catch (_) {
+        // Fallback a prueba de imagen
+        const ok = await new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = url;
+        });
+        if (ok) urls.push(url);
+      }
+    }
+    return urls;
   }
 
   function t(dict, path, fallback) {
@@ -62,7 +100,8 @@
     track.className = 'carousel-track';
     track.style.setProperty('--carousel-duration', `${transitionMs}ms`);
 
-    images.forEach((src) => {
+    let imgs = [...images];
+    function appendSlide(src) {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
       const img = document.createElement('img');
@@ -72,7 +111,8 @@
       img.decoding = 'async';
       slide.appendChild(img);
       track.appendChild(slide);
-    });
+    }
+    imgs.forEach(appendSlide);
 
     const prev = document.createElement('button');
     prev.className = 'carousel-btn prev';
@@ -96,7 +136,7 @@
       });
     }
     function go(delta) {
-      index = (index + delta + images.length) % images.length;
+      index = (index + delta + imgs.length) % imgs.length;
       update();
     }
   prev.addEventListener('click', () => go(-1));
@@ -114,7 +154,7 @@
 
     let timer = null;
     function start() {
-      if (!auto || images.length <= 1) return;
+      if (!auto || imgs.length <= 1) return;
       stop();
       timer = setInterval(() => go(1), intervalMs);
     }
@@ -124,16 +164,22 @@
     container.addEventListener('touchstart', stop, { passive: true });
     container.addEventListener('touchend', start, { passive: true });
     start();
-    return { el: container, go, update, start, stop };
+    function addImages(newOnes = []) {
+      if (!Array.isArray(newOnes) || newOnes.length === 0) return;
+      newOnes.forEach((src) => { imgs.push(src); appendSlide(src); });
+      update();
+      start();
+    }
+    return { el: container, go, update, start, stop, addImages };
   }
 
-  function createTourCard(dict, tour, images) {
+  function createTourCard(dict, tour, initial) {
     const card = document.createElement('article');
     card.className = 'card';
     card.tabIndex = 0;
 
     const alt = `${t(dict, tour.key, tour.folder)} - Cartagena con Neys`;
-    const carousel = createCarousel(images, alt);
+    const carousel = createCarousel(initial.images, alt);
     card.appendChild(carousel.el);
 
     const overlay = document.createElement('div');
@@ -174,6 +220,16 @@
       card.classList.add('touch-active');
       setTimeout(() => card.classList.remove('touch-active'), 3000);
     });
+
+    // Marcar para descubrimiento perezoso si aplica
+    card.dataset.folder = tour.folder;
+    // Guardar referencia al carrusel para añadir imágenes luego
+    card._carousel = carousel;
+    // Si hay más imágenes o requiere descubrimiento, marcar para lazy
+    if ((initial.rest && initial.rest.length > 0) || initial.needsDiscover) {
+      card.dataset.lazy = 'true';
+      if (initial.rest && initial.rest.length > 0) card._lazyRest = initial.rest;
+    }
 
     return card;
   }
@@ -238,15 +294,39 @@
     if (!grid) return;
     grid.innerHTML = '';
 
-  const results = TOURS.map((tour) => ({ tour, images: listImagesFor(tour.folder) }));
+  const results = TOURS.map((tour) => ({ tour, initial: listImagesFor(tour.folder) }));
 
-    const valid = results.filter((r) => r.images.length > 0);
-    valid.forEach(({ tour, images }) => {
-      const card = createTourCard(dict, tour, images);
+    const valid = results.filter((r) => r.initial.images.length > 0);
+    valid.forEach(({ tour, initial }) => {
+      const card = createTourCard(dict, tour, initial);
       grid.appendChild(card);
     });
 
     if (countEl) countEl.textContent = `${valid.length} ${t(dict, 'tours.count_label', 'tours disponibles')}`;
+
+    // Lazy discovery por intersección
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(async (entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (el.dataset.lazy === 'true' && el.dataset.folder && el._carousel) {
+            if (el._lazyRest && el._lazyRest.length) {
+              el._carousel.addImages(el._lazyRest);
+              el.dataset.lazy = 'done';
+            } else {
+              const found = await discoverImages(el.dataset.folder, 8);
+              if (Array.isArray(found) && found.length > 1) {
+                el._carousel.addImages(found.slice(1));
+                el.dataset.lazy = 'done';
+              }
+            }
+          }
+          obs.unobserve(el);
+        }
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.15 });
+
+    Array.from(grid.children).forEach((child) => io.observe(child));
   }
 
   function renderServices(dict) {
