@@ -85,6 +85,21 @@
     return v ?? fallback ?? path;
   }
 
+  function getCurrentLang() {
+    try { return (window.i18n && window.i18n.getLang && window.i18n.getLang()) || document.documentElement.lang || 'es'; }
+    catch (_) { return 'es'; }
+  }
+
+  function buildTourMessage(name) {
+    const lang = getCurrentLang();
+    return lang === 'es' ? `Estoy interesado en este tour ${name}` : `I'm interested in this tour ${name}`;
+  }
+
+  function buildServiceMessage(name) {
+    const lang = getCurrentLang();
+    return lang === 'es' ? `Estoy interesado en este servicio ${name}` : `I'm interested in this service ${name}`;
+  }
+
   function getWhatsAppURL(text) {
     const number = document.body.getAttribute('data-whatsapp-number') || '';
     const msg = encodeURIComponent(text || 'Hola, estoy interesado en este tour');
@@ -192,8 +207,9 @@
     const actions = document.createElement('div');
     actions.className = 'card-actions';
 
-    const btnChat = document.createElement('a');
-    btnChat.href = getWhatsAppURL(t(dict, 'cta.whatsapp_message', 'Hola, estoy interesado en este tour'));
+  const btnChat = document.createElement('a');
+  const tourName = t(dict, tour.key, tour.folder);
+  btnChat.href = getWhatsAppURL(buildTourMessage(tourName));
     btnChat.target = '_blank';
     btnChat.rel = 'noopener';
     btnChat.className = 'inline-flex items-center gap-2 rounded-md bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-3 py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500';
@@ -203,10 +219,10 @@
     btnMore.type = 'button';
     btnMore.className = 'inline-flex items-center gap-2 rounded-md border border-white/80 bg-white/90 hover:bg-white text-slate-900 text-sm font-semibold px-3 py-2';
     btnMore.textContent = t(dict, 'cta.more', 'Conocer más');
-  btnMore.addEventListener('click', () => openModal({
-      title: t(dict, tour.key, tour.folder),
+    btnMore.addEventListener('click', () => openModal({
+      title: tourName,
       body: t(dict, tour.descKey, ''),
-      actionHref: getWhatsAppURL(t(dict, 'cta.whatsapp_message', 'Hola, estoy interesado en este tour'))
+      actionHref: getWhatsAppURL(buildTourMessage(tourName))
     }));
 
     actions.appendChild(btnChat);
@@ -257,8 +273,9 @@
   const actions = document.createElement('div');
     actions.className = 'card-actions';
 
-    const btnChat = document.createElement('a');
-    btnChat.href = getWhatsAppURL(t(dict, 'cta.whatsapp_message', 'Hola, estoy interesado en este tour'));
+  const btnChat = document.createElement('a');
+  const svcName = t(dict, service.key);
+  btnChat.href = getWhatsAppURL(buildServiceMessage(svcName));
     btnChat.target = '_blank';
     btnChat.rel = 'noopener';
     btnChat.className = 'inline-flex items-center gap-2 rounded-md bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-3 py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500';
@@ -269,9 +286,9 @@
     btnMore.className = 'inline-flex items-center gap-2 rounded-md border border-white/80 bg-white/90 hover:bg-white text-slate-900 text-sm font-semibold px-3 py-2';
     btnMore.textContent = t(dict, 'cta.more', 'Conocer más');
     btnMore.addEventListener('click', () => openModal({
-      title: t(dict, service.key),
+      title: svcName,
       body: t(dict, service.descKey, ''),
-      actionHref: getWhatsAppURL(t(dict, 'cta.whatsapp_message', 'Hola, estoy interesado en este tour'))
+      actionHref: getWhatsAppURL(buildServiceMessage(svcName))
     }));
 
     actions.appendChild(btnChat);
