@@ -7,8 +7,9 @@
   "app": { "title": "Cartagena con Neys" },
   "sections": {
     "home": "Inicio",
-    "tours": "Tours principales",
-    "services": "Otros servicios",
+  "tours": "Tours principales",
+  "services": "Otros servicios",
+  "specials": "Tours especiales en lancha",
     "contact": "Contáctame"
   },
   "hero": {
@@ -36,17 +37,24 @@
     "isla_del_sol": "Isla del Sol",
     "isla_pirata": "Isla Pirata",
     "isla_cocotera": "Isla Cocotera",
-    "isla_del_encanto": "Isla del Encanto",
+  "isla_del_encanto": "Isla del Encanto",
   "isla_encantada": "Isla Encantada",
   "isla_paue": "Isla Paue",
   "cena_sibarita": "Cena en Sibarita",
     "isla_ibbiza": "Isla de Ibbiza",
     "tour_bahia": "Tour Bahía",
     "barco_pirata": "Barco Pirata"
+  ,
+  "especial_rosario": "Islas del Rosario en lancha",
+  "especial_cinco_islas": "Tour 5 Islas (lancha)",
+  "especial_cuatro_islas": "Tour 4 Islas (lancha)"
   },
   "price": {
     "placeholder": "cambiar",
     "tours": {
+  "especial_rosario": "$ 170.000",
+  "especial_cinco_islas": "$ 290.000",
+  "especial_cuatro_islas": "$ 240.000",
   "isla_paue": "$ 440.000",
   "cena_sibarita": "$ 275.000",
   "playa_tranquila": "$ 120.000",
@@ -82,7 +90,8 @@
     "reserve": "Hacer reserva",
     "close": "Cerrar",
   "whatsapp_message": "Hola, estoy interesado en este tour",
-  "show_more": "Ver más"
+  "show_more": "Ver más",
+  "show_less": "Ver menos"
   },
   "services": {
     "alquiler_caballos": "Alquiler de caballos",
@@ -97,6 +106,42 @@
   },
   "desc": {
     "tours": {
+      "especial_rosario": "Islas del Rosario y Barú (Playa Tranquila/Playa Blanca). Salida diaria. Plan full en lancha.",
+      "especial_rosario_bullets": [
+        "Recogida en hotel 8:00–8:30 a. m.",
+        "Salida desde Muelle La Bodeguita 8:44–9:10 a. m.",
+        "Transporte en lancha rápida (25–44 pax)",
+        "Panorámico por las Islas del Rosario",
+        "Parada en Oceanario (opcional)",
+        "Snorkel (opcional)",
+        "Cóctel de bienvenida",
+        "Tiempo de playa en Barú (Playa Tranquila/Playa Blanca)",
+        "Sillas asoleadoras y parasoles",
+        "Almuerzo típico (pescado o pollo, acompañantes)",
+        "No incluye: tasa portuaria $29.000, Oceanario $40.000, snorkel $50.000, bebidas"
+      ],
+      "especial_cinco_islas": "Lancha rápida, castillo San Fernando, acuario opcional, snorkel incluido, Cholón, Agua Azul y Playa Tranquila.",
+      "especial_cinco_islas_bullets": [
+        "Recorrido en lancha rápida (salida 8:00 a. m.)",
+        "Panorámico castillo San Fernando (Bocachica)",
+        "Parada en Rosario: Acuario ($40.000) y snorkel (incluido)",
+        "Parada en Cholón con degustación de cóctel de camarón",
+        "Parada en Agua Azul con acceso a sillas en la orilla",
+        "Playa Blanca – Barú (sector Playa Tranquila): almuerzo y baño",
+        "Experiencia de plancton luminoso",
+        "Retorno por vía terrestre en la noche",
+        "No incluye: tasa portuaria $29.000 y no especificadas"
+      ],
+      "especial_cuatro_islas": "Lancha rápida, acuario o snorkel (opcionales), Cholón, Agua Azul y almuerzo en Playa Tranquila.",
+      "especial_cuatro_islas_bullets": [
+        "Transporte ida y regreso en lancha rápida (salida 9:00 a. m.)",
+        "Panorámico por castillos San Fernando y San José (Bocachica)",
+        "Rosario: Acuario ($40.000) o Snorkel ($50.000), opcional",
+        "Cholón: 1 hora de disfrute",
+        "Agua Azul: acceso a sillas en la orilla",
+        "Playa Blanca – Barú (Playa Tranquila): almuerzo y baño",
+        "No incluye: tasa portuaria $29.000 ni actividades no especificadas"
+      ],
       "atardecer_sibarita": "Cena a bordo con vistas espectaculares del atardecer sobre la bahía de Cartagena.",
       "chiva_rumbera": "Recorrido nocturno con música, baile y diversión por las calles de la ciudad.",
       "city_tour": "Conoce el centro histórico, murallas y sitios emblemáticos con guía local.",

@@ -8,7 +8,8 @@
   "sections": {
     "home": "Home",
     "tours": "Top tours",
-    "services": "Other services",
+  "services": "Other services",
+  "specials": "Special boat tours",
     "contact": "Contact me"
   },
   "hero": {
@@ -25,7 +26,10 @@
     "playa_tranquila": "Tranquila Beach",
     "tour_cinco_islas": "5 Islands Tour",
     "volcan_totumo": "Totumo Volcano",
-    "tour_palenque": "Palenque Tour",
+  "tour_palenque": "Palenque Tour",
+  "especial_rosario": "Rosario Islands by speedboat",
+  "especial_cinco_islas": "5 Islands Tour (boat)",
+  "especial_cuatro_islas": "4 Islands Tour (boat)",
     "top3_islas_vip": "Top 3 Islands VIP",
     "bora_bora": "Bora Bora",
     "top4_islas_vip": "Top 4 Islands VIP",
@@ -47,6 +51,9 @@
   "price": {
     "placeholder": "tbd",
     "tours": {
+  "especial_rosario": "$ 170,000",
+  "especial_cinco_islas": "$ 290,000",
+  "especial_cuatro_islas": "$ 240,000",
   "isla_paue": "$ 440,000",
   "cena_sibarita": "$ 275,000",
   "playa_tranquila": "$ 120,000",
@@ -82,7 +89,8 @@
     "reserve": "Reserve",
     "close": "Close",
   "whatsapp_message": "Hi, I'm interested in this tour",
-  "show_more": "Show more"
+  "show_more": "Show more",
+  "show_less": "Show less"
   },
   "services": {
     "alquiler_caballos": "Horse rentals",
@@ -107,6 +115,42 @@
       "tour_cinco_islas": "Island-hopping to the most beautiful spots with snorkeling and sun.",
       "volcan_totumo": "Relax in the volcanic mud with therapeutic properties and visit nearby lagoons.",
   "tour_palenque": "Learn about San Basilio de Palenque's history and culture, an oral and intangible heritage.",
+  "especial_rosario": "Rosario Islands and Barú (Playa Tranquila/Playa Blanca). Daily departures. Full plan by speedboat.",
+  "especial_rosario_bullets": [
+    "Hotel pickup 8:00–8:30 am",
+    "Departure from La Bodeguita Pier 8:44–9:10 am",
+    "Speedboat transfer (25–44 pax)",
+    "Panoramic tour of the Rosario Islands",
+    "Stop at the Oceanarium (optional)",
+    "Snorkeling stop (optional)",
+    "Welcome cocktail",
+    "Beach time in Barú (Playa Tranquila/Playa Blanca)",
+    "Sun chairs and parasols",
+    "Typical lunch (fish or chicken, sides)",
+    "Not included: port tax $29,000, Oceanarium $40,000, snorkel $50,000, drinks"
+  ],
+  "especial_cinco_islas": "Speedboat, San Fernando fort, optional aquarium, snorkel included, Cholón, Agua Azul, Playa Tranquila.",
+  "especial_cinco_islas_bullets": [
+    "Speedboat ride (departure 8:00 am)",
+    "Panoramic view of San Fernando Fort (Bocachica)",
+    "Rosario stop: Oceanarium ($40,000) and snorkel (included)",
+    "Cholón stop with shrimp cocktail tasting",
+    "Agua Azul stop with beach chairs",
+    "Playa Tranquila (Barú): lunch and beach time",
+    "Bioluminescent plankton experience",
+    "Return to Cartagena by land at night",
+    "Not included: port tax $29,000 and unspecified activities"
+  ],
+  "especial_cuatro_islas": "Speedboat, optional aquarium or snorkel, Cholón, Agua Azul, lunch at Playa Tranquila.",
+  "especial_cuatro_islas_bullets": [
+    "Round trip by speedboat (departure 9:00 am)",
+    "Panoramic views of San Fernando and San José forts (Bocachica)",
+    "Rosario: Oceanarium ($40,000) or Snorkel ($50,000), optional",
+    "Cholón: 1 hour of fun",
+    "Agua Azul: access to beach chairs",
+    "Playa Tranquila (Barú): lunch and beach time",
+    "Not included: port tax $29,000 and unspecified activities"
+  ],
   "top3_islas_vip": "Day trip to three top islands with VIP perks: beach club, lunch, and speedboat.",
   "bora_bora": "Beach club experience at Bora Bora (Barú) with lunch and sunbeds.",
   "top4_islas_vip": "Tour across four paradise islands with VIP service.",

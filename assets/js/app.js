@@ -127,6 +127,11 @@
     return v ?? fallback ?? path;
   }
 
+  // Obtiene el valor crudo de una ruta (puede ser array/objeto)
+  function getPath(dict, path) {
+    return path.split('.').reduce((acc, k) => (acc && acc[k] != null ? acc[k] : null), dict);
+  }
+
   function getCurrentLang() {
     try { return (window.i18n && window.i18n.getLang && window.i18n.getLang()) || document.documentElement.lang || 'es'; }
     catch (_) { return 'es'; }
@@ -376,7 +381,11 @@
     const grid = document.getElementById('tours-grid');
     const countEl = document.getElementById('tours-count');
     if (!grid) return;
+  // Limpiar grilla y eliminar botón "Ver más" previo si existiera (evita duplicados al cambiar idioma)
   grid.innerHTML = '';
+  const parent = grid.parentElement;
+  const prevBtn = parent && parent.querySelector('[data-role="tours-show-more"]');
+  if (prevBtn) prevBtn.remove();
 
   const results = TOURS.map((tour) => ({ tour, initial: listImagesFor(tour.folder) }));
 
@@ -396,6 +405,7 @@
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'mt-2 w-full rounded-md border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-semibold py-2';
+      btn.setAttribute('data-role', 'tours-show-more');
       const baseLabel = t(dict, 'cta.show_more', 'Ver más');
       let nextIndex = 0;
       const chunkSize = 6; // cargar 6 por tanda
@@ -456,6 +466,144 @@
     if (!grid) return;
     grid.innerHTML = '';
     SERVICES.forEach((s) => grid.appendChild(createServiceCard(dict, s)));
+  }
+
+  // Slider de especiales en lancha (collage 3 fotos)
+  function renderSpecials(dict) {
+    const wrap = document.getElementById('specials-slider');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+
+    const SPECIALS = [
+      {
+        key: 'tours.especial_rosario',
+        descKey: 'desc.tours.especial_rosario',
+  priceKey: 'price.tours.especial_rosario',
+        folder: 'Top 3 islas vip' // usaremos imágenes existentes cercanas
+      },
+      {
+        key: 'tours.especial_cinco_islas',
+        descKey: 'desc.tours.especial_cinco_islas',
+  priceKey: 'price.tours.especial_cinco_islas',
+        folder: 'Tour 5 islas'
+      },
+      {
+        key: 'tours.especial_cuatro_islas',
+        descKey: 'desc.tours.especial_cuatro_islas',
+  priceKey: 'price.tours.especial_cuatro_islas',
+        folder: 'Tour 4 islas vip'
+      }
+    ];
+
+    // Construcción del slider simple con flechas
+    const slider = document.createElement('div');
+    slider.className = 'relative overflow-hidden rounded-xl border border-slate-200';
+
+    const track = document.createElement('div');
+    track.className = 'flex transition-transform duration-700 ease-out';
+
+  function collageFor(folder, title, desc, priceText, bullets, labels) {
+      const item = document.createElement('div');
+      item.className = 'min-w-full p-2';
+  const grid = document.createElement('div');
+  grid.className = 'grid grid-cols-3 gap-2 h-64';
+      const imgs = IMAGE_COUNTS[folder] || 3;
+      const selected = [1, 2, 3].map((i) => `${TOURS_BASE}/${folder}/${i}.webp`);
+      selected.forEach((src, idx) => {
+        const d = document.createElement('div');
+        d.className = 'rounded-lg overflow-hidden h-full';
+        const img = document.createElement('img');
+        img.src = src; img.alt = title; img.loading = 'lazy'; img.decoding = 'async';
+        img.className = 'w-full h-full object-cover';
+        d.appendChild(img);
+        grid.appendChild(d);
+      });
+  const header = document.createElement('div');
+  header.className = 'mt-2 flex items-center justify-between';
+  const h = document.createElement('h3'); h.className = 'text-lg font-bold'; h.textContent = title;
+  const p = document.createElement('span'); p.className = 'text-sm font-semibold bg-white border border-slate-300 rounded px-2 py-1'; p.textContent = priceText || '';
+  header.appendChild(h); header.appendChild(p);
+  const snippetWrap = document.createElement('div');
+  snippetWrap.className = 'mt-2 bg-slate-50 border border-slate-200 rounded px-3 py-2';
+  if (Array.isArray(bullets) && bullets.length) {
+    const ul = document.createElement('ul');
+    ul.className = 'list-disc pl-5 space-y-1 text-sm text-slate-700';
+    const initialCount = 5;
+    bullets.forEach((txt, i) => {
+      const li = document.createElement('li');
+      li.textContent = txt;
+      if (i >= initialCount) li.classList.add('hidden');
+      ul.appendChild(li);
+    });
+    snippetWrap.appendChild(ul);
+    if (bullets.length > initialCount) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mt-2 text-sm font-semibold text-brand-700 hover:text-brand-800';
+      btn.textContent = labels.more;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.addEventListener('click', () => {
+        const hidden = ul.querySelectorAll('.hidden');
+        const expanded = hidden.length === 0;
+        if (expanded) {
+          // Colapsar
+          Array.from(ul.children).forEach((li, idx) => { if (idx >= initialCount) li.classList.add('hidden'); });
+          btn.textContent = labels.more;
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          // Expandir
+          hidden.forEach((li) => li.classList.remove('hidden'));
+          btn.textContent = labels.less;
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+      snippetWrap.appendChild(btn);
+    }
+  } else {
+    const snippet = document.createElement('p');
+    snippet.className = 'text-sm text-slate-700';
+    snippet.textContent = desc;
+    snippetWrap.appendChild(snippet);
+  }
+  item.appendChild(grid);
+  item.appendChild(header); // título y precio justo debajo del collage
+  item.appendChild(snippetWrap); // descripción al final
+      return item;
+    }
+
+    const slides = SPECIALS.map(s => {
+  const title = t(dict, s.key, '');
+  const desc = t(dict, s.descKey, '');
+      const priceText = t(dict, s.priceKey, '');
+      // Intentar obtener bullets detallados si existen
+      const bulletKey = `desc.tours.${s.key.split('.').pop()}_bullets`;
+      const bullets = getPath(dict, bulletKey);
+      const labels = {
+        more: t(dict, 'cta.show_more', 'Ver más'),
+        less: t(dict, 'cta.show_less', 'Ver menos')
+      };
+      return collageFor(s.folder, title, desc, priceText, bullets, labels);
+    });
+    slides.forEach(el => track.appendChild(el));
+    slider.appendChild(track);
+
+    // Controles
+    const prev = document.createElement('button');
+    prev.className = 'absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 border border-slate-300 rounded-full p-2 shadow';
+    prev.setAttribute('aria-label', 'Anterior');
+    prev.textContent = '‹';
+    const next = document.createElement('button');
+    next.className = 'absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 border border-slate-300 rounded-full p-2 shadow';
+    next.setAttribute('aria-label', 'Siguiente');
+    next.textContent = '›';
+    slider.appendChild(prev); slider.appendChild(next);
+
+    let idx = 0;
+    function update() { track.style.transform = `translateX(-${idx * 100}%)`; }
+    prev.onclick = () => { idx = (idx - 1 + slides.length) % slides.length; update(); };
+    next.onclick = () => { idx = (idx + 1) % slides.length; update(); };
+
+    wrap.appendChild(slider);
   }
 
   // Modal simple reutilizable
@@ -521,13 +669,15 @@
     const lang = (window.i18n && window.i18n.getLang && window.i18n.getLang()) || 'es';
     const dict = await window.i18n.loadTranslations(lang);
     window.i18n.applyTranslations(dict);
-    await renderTours(dict);
+  await renderTours(dict);
+  renderSpecials(dict);
   renderServices(dict);
     setupContactLinks(dict);
 
     document.addEventListener('i18n:changed', async (ev) => {
       const { dict } = ev.detail;
   await renderTours(dict);
+  renderSpecials(dict);
   renderServices(dict);
       setupContactLinks(dict);
     });
