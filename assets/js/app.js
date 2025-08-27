@@ -4,17 +4,41 @@
   const SERVICES_BASE = 'img/Otros servicios';
   // Mapear carpetas conocidas a nombres amigables por clave i18n
   const TOURS = [
-  { folder: 'Atardecer sibarita master', key: 'tours.atardecer_sibarita', descKey: 'desc.tours.atardecer_sibarita' },
-  { folder: 'chiva rumbera', key: 'tours.chiva_rumbera', descKey: 'desc.tours.chiva_rumbera' },
-  { folder: 'City tour', key: 'tours.city_tour', descKey: 'desc.tours.city_tour' },
-  { folder: 'Eteka beach resort', key: 'tours.eteka_beach', descKey: 'desc.tours.eteka_beach' },
-  { folder: 'Pao Pao', key: 'tours.pao_pao', descKey: 'desc.tours.pao_pao' },
-  { folder: 'Playa blanca', key: 'tours.playa_blanca', descKey: 'desc.tours.playa_blanca' },
-  { folder: 'playa tranquila', key: 'tours.playa_tranquila', descKey: 'desc.tours.playa_tranquila' },
-  { folder: 'Tour 5 islas', key: 'tours.tour_cinco_islas', descKey: 'desc.tours.tour_cinco_islas' },
-  { folder: 'Volcan de totumo', key: 'tours.volcan_totumo', descKey: 'desc.tours.volcan_totumo' },
-  { folder: 'Palenque', key: 'tours.tour_palenque', descKey: 'desc.tours.tour_palenque' },
+  { folder: 'Atardecer sibarita master', key: 'tours.atardecer_sibarita', priceKey: 'price.tours.atardecer_sibarita', descKey: 'desc.tours.atardecer_sibarita' },
+  { folder: 'chiva rumbera', key: 'tours.chiva_rumbera', priceKey: 'price.tours.chiva_rumbera', descKey: 'desc.tours.chiva_rumbera' },
+  { folder: 'City tour', key: 'tours.city_tour', priceKey: 'price.tours.city_tour', descKey: 'desc.tours.city_tour' },
+  { folder: 'Eteka beach resort', key: 'tours.eteka_beach', priceKey: 'price.tours.eteka_beach', descKey: 'desc.tours.eteka_beach' },
+  { folder: 'Pao Pao', key: 'tours.pao_pao', priceKey: 'price.tours.pao_pao', descKey: 'desc.tours.pao_pao' },
+  { folder: 'Playa blanca', key: 'tours.playa_blanca', priceKey: 'price.tours.playa_blanca', descKey: 'desc.tours.playa_blanca' },
+  { folder: 'playa tranquila', key: 'tours.playa_tranquila', priceKey: 'price.tours.playa_tranquila', descKey: 'desc.tours.playa_tranquila' },
+  { folder: 'Tour 5 islas', key: 'tours.tour_cinco_islas', priceKey: 'price.tours.tour_cinco_islas', descKey: 'desc.tours.tour_cinco_islas' },
+  { folder: 'Volcan de totumo', key: 'tours.volcan_totumo', priceKey: 'price.tours.volcan_totumo', descKey: 'desc.tours.volcan_totumo' },
+  { folder: 'Palenque', key: 'tours.tour_palenque', priceKey: 'price.tours.tour_palenque', descKey: 'desc.tours.tour_palenque' },
+  // Nuevos tours añadidos por el cliente (ahora mapeados a carpetas reales)
+  { folder: 'Top 3 islas vip', key: 'tours.top3_islas_vip', priceKey: 'price.tours.top3_islas_vip', descKey: 'desc.tours.top3_islas_vip' },
+  { folder: 'bora bora', key: 'tours.bora_bora', priceKey: 'price.tours.bora_bora', descKey: 'desc.tours.bora_bora' },
+  { folder: 'Tour 4 islas vip', key: 'tours.top4_islas_vip', priceKey: 'price.tours.top4_islas_vip', descKey: 'desc.tours.top4_islas_vip' },
+  { folder: 'Cholon', key: 'tours.cholon', priceKey: 'price.tours.cholon', descKey: 'desc.tours.cholon' },
+  { folder: 'Baranquilla santa marta', key: 'tours.barranquilla_tour', priceKey: 'price.tours.barranquilla_tour', descKey: 'desc.tours.barranquilla_tour' },
+  { folder: 'luxuri', key: 'tours.luxury', priceKey: 'price.tours.luxury', descKey: 'desc.tours.luxury' },
+  { folder: 'isla lizamar', key: 'tours.isla_lizmar', priceKey: 'price.tours.isla_lizmar', descKey: 'desc.tours.isla_lizmar' },
+  { folder: 'isla del sol', key: 'tours.isla_del_sol', priceKey: 'price.tours.isla_del_sol', descKey: 'desc.tours.isla_del_sol' },
+  { folder: 'isla del pirata', key: 'tours.isla_pirata', priceKey: 'price.tours.isla_pirata', descKey: 'desc.tours.isla_pirata' },
+  { folder: 'Isla cocotera', key: 'tours.isla_cocotera', priceKey: 'price.tours.isla_cocotera', descKey: 'desc.tours.isla_cocotera' },
+  { folder: 'isla del encanto', key: 'tours.isla_del_encanto', priceKey: 'price.tours.isla_del_encanto', descKey: 'desc.tours.isla_del_encanto' },
+  { folder: 'isla encantada', key: 'tours.isla_encantada', priceKey: 'price.tours.isla_encantada', descKey: 'desc.tours.isla_encantada' }
   ];
+  // Nuevos (agosto 2025)
+  TOURS.push(
+    { folder: 'isla de Ibbiza', key: 'tours.isla_ibbiza', priceKey: 'price.tours.isla_ibbiza', descKey: 'desc.tours.isla_ibbiza' },
+    { folder: 'Tour bahia', key: 'tours.tour_bahia', priceKey: 'price.tours.tour_bahia', descKey: 'desc.tours.tour_bahia' },
+    { folder: 'Barco pirata', key: 'tours.barco_pirata', priceKey: 'price.tours.barco_pirata', descKey: 'desc.tours.barco_pirata' }
+  );
+  // Nuevos adicionales
+  TOURS.push(
+    { folder: 'Paue', key: 'tours.isla_paue', priceKey: 'price.tours.isla_paue', descKey: 'desc.tours.isla_paue' },
+    { folder: 'Cena sibarita', key: 'tours.cena_sibarita', priceKey: 'price.tours.cena_sibarita', descKey: 'desc.tours.cena_sibarita' }
+  );
 
   // Servicios: nombre de archivo exacto según estructura
   const SERVICES = [
@@ -26,16 +50,34 @@
   // Conteos estáticos de imágenes basados en la estructura provista del proyecto
   const IMAGE_COUNTS = {
     'Atardecer sibarita master': 2,
+    'Baranquilla santa marta': 5,
+    'bora bora': 5,
     'chiva rumbera': 3,
+    'Cholon': 4,
     'City tour': 3,
     'Eteka beach resort': 4,
+    'Isla cocotera': 4,
+    'isla del encanto': 5,
+    'isla del pirata': 5,
+    'isla del sol': 6,
+    'isla encantada': 4,
+    'isla lizamar': 6,
+    'luxuri': 4,
+    'Palenque': 4,
     'Pao Pao': 5,
     'Playa blanca': 3,
     'playa tranquila': 2,
-  'Tour 5 islas': 4,
-  'Volcan de totumo': 3,
-  'Palenque': 4
+    'Top 3 islas vip': 4,
+    'Tour 4 islas vip': 4,
+    'Tour 5 islas': 4,
+    'Volcan de totumo': 3
   };
+  // Conteos para nuevos (agosto 2025)
+  IMAGE_COUNTS['isla de Ibbiza'] = 3;
+  IMAGE_COUNTS['Tour bahia'] = 3;
+  IMAGE_COUNTS['Barco pirata'] = 3;
+  IMAGE_COUNTS['Paue'] = 4;
+  IMAGE_COUNTS['Cena sibarita'] = 4;
 
   function listImagesFor(folder) {
     const n = IMAGE_COUNTS[folder];
@@ -107,7 +149,7 @@
     return `${base}?text=${msg}`;
   }
 
-  function createCarousel(images, alt, auto = true, intervalMs = 3500, transitionMs = 600) {
+  function createCarousel(images, alt, auto = true, intervalMs = 5200, transitionMs = 600) {
     const container = document.createElement('div');
     container.className = 'carousel';
 
@@ -124,6 +166,15 @@
       img.alt = alt;
       img.loading = 'lazy';
       img.decoding = 'async';
+      img.onerror = () => {
+        // Reemplazar por un placeholder si la imagen no existe
+        slide.innerHTML = '';
+        const ph = document.createElement('div');
+        ph.className = 'placeholder-cover';
+        ph.setAttribute('role', 'img');
+        ph.setAttribute('aria-label', alt);
+        slide.appendChild(ph);
+      };
       slide.appendChild(img);
       track.appendChild(slide);
     }
@@ -168,8 +219,9 @@
     });
 
     let timer = null;
+    let visible = true;
     function start() {
-      if (!auto || imgs.length <= 1) return;
+      if (!auto || imgs.length <= 1 || !visible) return;
       stop();
       timer = setInterval(() => go(1), intervalMs);
     }
@@ -178,6 +230,14 @@
   container.addEventListener('mouseleave', start);
     container.addEventListener('touchstart', stop, { passive: true });
     container.addEventListener('touchend', start, { passive: true });
+    // Pausar cuando el carrusel no está en viewport para ahorrar recursos
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        visible = entry.isIntersecting;
+        if (visible) start(); else stop();
+      });
+    }, { rootMargin: '0px', threshold: 0.2 });
+    io.observe(container);
     start();
     function addImages(newOnes = []) {
       if (!Array.isArray(newOnes) || newOnes.length === 0) return;
@@ -196,6 +256,13 @@
     const alt = `${t(dict, tour.key, tour.folder)} - Cartagena con Neys`;
     const carousel = createCarousel(initial.images, alt);
     card.appendChild(carousel.el);
+
+    // Insignia de precio
+    const priceText = tour.priceKey ? t(dict, tour.priceKey, t(dict, 'price.placeholder', 'cambiar')) : t(dict, 'price.placeholder', 'cambiar');
+    const price = document.createElement('div');
+    price.className = 'price-badge';
+    price.textContent = priceText;
+    card.appendChild(price);
 
     const overlay = document.createElement('div');
     overlay.className = 'card-overlay';
@@ -309,19 +376,58 @@
     const grid = document.getElementById('tours-grid');
     const countEl = document.getElementById('tours-count');
     if (!grid) return;
-    grid.innerHTML = '';
+  grid.innerHTML = '';
 
   const results = TOURS.map((tour) => ({ tour, initial: listImagesFor(tour.folder) }));
 
     const valid = results.filter((r) => r.initial.images.length > 0);
-    valid.forEach(({ tour, initial }) => {
+    // Mostrar solo 3 filas inicialmente (depende de columnas responsive)
+    const isLg = window.matchMedia('(min-width: 1024px)').matches; // lg:grid-cols-3
+    const isSm = window.matchMedia('(min-width: 640px)').matches;  // sm:grid-cols-2
+    const cols = isLg ? 3 : (isSm ? 2 : 1);
+    const initialCount = cols * 3; // 3 filas
+    const toShow = valid.slice(0, initialCount);
+    const hidden = valid.slice(initialCount);
+    toShow.forEach(({ tour, initial }) => {
       const card = createTourCard(dict, tour, initial);
       grid.appendChild(card);
     });
+    if (hidden.length) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mt-2 w-full rounded-md border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-semibold py-2';
+      const baseLabel = t(dict, 'cta.show_more', 'Ver más');
+      let nextIndex = 0;
+      const chunkSize = 6; // cargar 6 por tanda
+      const updateLabel = () => {
+        const remaining = hidden.length - nextIndex;
+        btn.textContent = remaining > 0 ? `${baseLabel}` : baseLabel;
+      };
+      updateLabel();
+      btn.addEventListener('click', () => {
+        const slice = hidden.slice(nextIndex, nextIndex + chunkSize);
+        slice.forEach(({ tour, initial }) => {
+          const card = createTourCard(dict, tour, initial);
+          grid.appendChild(card);
+        });
+        nextIndex += slice.length;
+        // Reconfigurar lazy observer para los nuevos elementos
+        setupLazy(grid);
+        if (nextIndex >= hidden.length) {
+          btn.remove();
+        } else {
+          updateLabel();
+        }
+      });
+      grid.parentElement.appendChild(btn);
+    }
 
     if (countEl) countEl.textContent = `${valid.length} ${t(dict, 'tours.count_label', 'tours disponibles')}`;
 
-    // Lazy discovery por intersección
+    setupLazy(grid);
+  }
+
+  function setupLazy(grid) {
     const io = new IntersectionObserver((entries, obs) => {
       entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
@@ -342,7 +448,6 @@
         }
       });
     }, { rootMargin: '200px 0px', threshold: 0.15 });
-
     Array.from(grid.children).forEach((child) => io.observe(child));
   }
 
